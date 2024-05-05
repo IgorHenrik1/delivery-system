@@ -1,4 +1,5 @@
 import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import NextAuthSessionProvider from '../providers/sessionProvider';
@@ -19,9 +20,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <MantineProvider>
-                <NextAuthSessionProvider>
-                    <body className={inter.className}>{children}</body>
-                </NextAuthSessionProvider>
+                <body className={inter.className}>
+                    <NextAuthSessionProvider>
+                        {children}
+                    </NextAuthSessionProvider>
+                </body>
             </MantineProvider>
         </html>
     );
