@@ -1,5 +1,5 @@
-import Register from '@/components/Register';
+import Menu from '@/components/Menu';
 
 export default function Home() {
-    return <Register />;
+    return <Menu />;
 }
