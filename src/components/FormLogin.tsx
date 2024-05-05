@@ -42,6 +42,10 @@ export default function FormLogin() {
         router.replace('/menu');
     }
 
+    function handleRegister() {
+        router.replace('/cadastrar');
+    }
+
     return (
         <Box mx="auto">
             <form onSubmit={handleSubmit}>
@@ -66,12 +70,15 @@ export default function FormLogin() {
                 />
 
                 <Group justify="flex-end" mt="md">
+                    <Button className="bg-roxo" onClick={handleRegister}>
+                        Cadastrar
+                    </Button>
                     <Button
                         className="bg-roxo"
                         type="submit"
                         onClick={handleSubmit}
                     >
-                        Enviar
+                        Entrar
                     </Button>
                 </Group>
             </form>

@@ -1,6 +1,6 @@
 'use client';
 
-import RegisterLogin from './RegisterLogin';
+import RegisterLogin from '../../components/RegisterLogin';
 
 export default function Register() {
     return (

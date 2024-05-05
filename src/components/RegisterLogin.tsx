@@ -1,5 +1,6 @@
 import { Box, Button, Group, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { api } from '../services/api';
@@ -24,6 +25,8 @@ export default function RegisterLogin() {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
 
+    const router = useRouter();
+
     function handleRegister() {
         if (!name || !email || !password || !address || !phone) {
             return alert('preencha todos os campos!');
@@ -32,7 +35,7 @@ export default function RegisterLogin() {
         api.post('/users', { name, email, password, address, phone })
             .then(() => {
                 alert('Cadastro realizado com sucesso!');
-                window.location.href = '/login';
+                router.replace('/');
             })
             .catch((error) => {
                 if (error.response) {
@@ -88,7 +91,7 @@ export default function RegisterLogin() {
 
                 <Group justify="flex-end" mt="md">
                     <Button className="bg-roxo" onClick={handleRegister}>
-                        Enviar
+                        Cadastrar
                     </Button>
                 </Group>
             </form>

@@ -19,7 +19,7 @@ const nextAuthOptions: NextAuthOptions = {
                 },
             },
             async authorize(credentials, req) {
-                const res = await fetch('http://localhost:5555/sessions', {
+                const res = await fetch('http://localhost:3333/sessions', {
                     method: 'POST',
                     body: JSON.stringify({
                         email: credentials?.email,
@@ -40,6 +40,17 @@ const nextAuthOptions: NextAuthOptions = {
     ],
     pages: {
         signIn: '/',
+    },
+    callbacks: {
+        async jwt({ token, user }) {
+            user && (token.user = user);
+
+            return token;
+        },
+        async session({ session, token }) {
+            session = token.user as any;
+            return session;
+        },
     },
 };
 

@@ -1,18 +1,24 @@
-import { Avatar, Badge } from '@mantine/core';
-import { RiLogoutBoxRLine } from 'react-icons/ri';
+import { Avatar } from '@mantine/core';
 
-export default function HeaderMain() {
+import { getServerSession } from 'next-auth';
+
+import { nextAuthOptions } from '../app/api/auth/[...nextauth]/route';
+import ButtonLogout from './ButtonLogout';
+
+export default async function HeaderMain() {
+    const session = await getServerSession(nextAuthOptions);
+
     return (
         <div className="flex justify-between  py-2 max-w-7xl m-auto">
-            <Avatar src="https://github.com/igorhenrik1.png" alt="it's me" />
-            <Badge
-                variant="filled"
-                color="#8234E9"
-                size="xl"
-                className="rounded-lg"
-            >
-                <RiLogoutBoxRLine size={20} />
-            </Badge>
+            <div className="flex  items-center gap-4">
+                <Avatar
+                    src="https://github.com/igorhenrik1.png"
+                    alt="it's me"
+                />
+                <p>{session?.user?.name}</p>
+            </div>
+
+            <ButtonLogout />
         </div>
     );
 }
