@@ -1,10 +1,10 @@
-import { nextAuthOptions } from '@/app/api/auth/[...nextauth]/route';
 import { BackgroundImage, Box, Center } from '@mantine/core';
 import { getServerSession } from 'next-auth';
-import HeaderMain from '../components/HeaderMain';
-import Options from '../components/Options';
-import Products from '../components/Products';
-import Sidebar from '../components/Sidebar';
+import HeaderMain from '../../../components/HeaderMain';
+import Options from '../../../components/Options';
+import Products from '../../../components/Products';
+import Sidebar from '../../../components/Sidebar';
+import { nextAuthOptions } from '../../api/auth/[...nextauth]/route';
 
 export default async function Main() {
     const session = await getServerSession(nextAuthOptions);
